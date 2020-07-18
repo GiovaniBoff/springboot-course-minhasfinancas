@@ -1,4 +1,4 @@
-package com.project.minhasfinancas.model.entity;
+package com.project.minhasfinancas.model.enums;
 
 public enum TipoLancamento {
     RECEITA, DESPESA

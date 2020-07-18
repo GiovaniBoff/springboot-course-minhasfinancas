@@ -2,8 +2,7 @@ package com.project.minhasfinancas.model.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
-import javax.persistence.CascadeType;
+import com.project.minhasfinancas.model.enums.*;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -19,11 +18,13 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
 @Table(name = "lancamento", schema = "financas")
 @Data
+@Builder
 public class Lancamento {
 
     @Id
