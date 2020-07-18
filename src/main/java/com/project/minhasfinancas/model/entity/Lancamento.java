@@ -17,11 +17,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.convert.Jsr310Converters;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+
+import lombok.Data;
 
 @Entity
 @Table(name = "lancamento", schema = "financas")
+@Data
 public class Lancamento {
 
     @Id
