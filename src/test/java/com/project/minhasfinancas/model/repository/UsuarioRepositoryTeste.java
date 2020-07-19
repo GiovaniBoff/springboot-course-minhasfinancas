@@ -3,14 +3,17 @@ package com.project.minhasfinancas.model.repository;
 import com.project.minhasfinancas.model.entity.Usuario;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
+@ActiveProfiles("test")
 public class UsuarioRepositoryTeste {
 
     @Autowired
@@ -26,6 +29,19 @@ public class UsuarioRepositoryTeste {
 
         // verificação
         Assertions.assertThat(result).isTrue();
+    }
+
+    @Test
+    public void deveRetornarFalsoQuandoNaoHouverUsuarioCadastradoComOEmail() {
+        // cenáro
+        repository.deleteAll();
+
+        // ação
+        boolean result = repository.existsByEmail("usuario@email.com");
+
+        // verificação
+        Assertions.assertThat(result).isFalse();
+
     }
 
 }
