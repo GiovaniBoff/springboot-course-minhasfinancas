@@ -35,7 +35,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new ErroAutenticacao("Senha invalida");
         }
 
-        return null;
+        return usuario.get();
     }
 
     @Override
