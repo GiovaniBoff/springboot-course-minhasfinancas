@@ -7,6 +7,7 @@ import com.project.minhasfinancas.exception.RegraNegocioException;
 import com.project.minhasfinancas.model.entity.Usuario;
 import com.project.minhasfinancas.model.repository.UsuarioRepository;
 import com.project.minhasfinancas.service.UsuarioService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,17 @@ public class UsuarioServiceImpl implements UsuarioService {
         super();
         this.repository = repository;
     }
+
+    @Override
+    public List<Usuario> buscarUsuario() {
+        List<Usuario> usuarios = repository.findAll();
+
+        if (usuarios.isEmpty()) {
+            throw new RegraNegocioException("Lista de usuarioas vazia !");
+        }
+
+        return usuarios;
+    };
 
     @Override
     public Usuario autenticar(String email, String senha) {
