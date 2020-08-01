@@ -53,7 +53,6 @@ public class UsuarioRepositoryTeste {
     }
 
     @Test
-
     public void devePersistirUmUsuarioNaBaseDeDados() {
         // cenário
         Usuario usuario = criarUsuario();
