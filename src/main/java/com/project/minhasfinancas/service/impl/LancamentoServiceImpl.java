@@ -11,6 +11,9 @@ import com.project.minhasfinancas.model.repository.LancamentoRepository;
 import com.project.minhasfinancas.service.LancamentoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -41,9 +44,12 @@ public class LancamentoServiceImpl implements LancamentoService {
     }
 
     @Override
+    @Transactional
     public List<Lancamento> buscar(Lancamento lancamentoFiltro) {
-        // TODO Auto-generated method stub
-        return null;
+        Example<Lancamento> example = Example.of(lancamentoFiltro,
+                ExampleMatcher.matching().withIgnoreCase().withStringMatcher(StringMatcher.CONTAINING));
+
+        return repository.findAll(example);
     }
 
     @Override
