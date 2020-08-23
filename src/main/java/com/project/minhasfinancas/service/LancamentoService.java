@@ -4,6 +4,7 @@ import com.project.minhasfinancas.model.entity.Lancamento;
 import com.project.minhasfinancas.model.enums.StatusLancamento;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LancamentoService {
     Lancamento salvar(Lancamento lancamento);
@@ -18,4 +19,5 @@ public interface LancamentoService {
 
     void validar(Lancamento lancamento);
 
+    Optional<Lancamento> obterPorId(Long id);
 }

@@ -7,6 +7,7 @@ import com.project.minhasfinancas.exception.RegraNegocioException;
 import com.project.minhasfinancas.model.entity.Usuario;
 import com.project.minhasfinancas.model.repository.UsuarioRepository;
 import com.project.minhasfinancas.service.UsuarioService;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,12 @@ public class UsuarioServiceImpl implements UsuarioService {
         if (existe) {
             throw new RegraNegocioException("Já existe um usuário cadastrado com este email");
         }
+    }
+
+    @Override
+    public Optional<Usuario> obterPorId(Long id) {
+        Optional<Usuario> usuario = repository.findById(id);
+        return usuario;
     }
 
 }
